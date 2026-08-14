@@ -1,4 +1,6 @@
 import Header from "@/components/Header";
+import JsonLd from "@/components/JsonLd";
+import { eventJsonLd } from "@/lib/seo";
 import Hero from "@/components/home/Hero";
 import Welcome from "@/components/home/Welcome";
 import Facts from "@/components/home/Facts";
@@ -10,6 +12,7 @@ import Contact from "@/components/home/Contact";
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
+      <JsonLd data={eventJsonLd} />
       <Header />
       <main>
         <Hero />
