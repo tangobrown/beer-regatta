@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import Image from "next/image";
 import { CalendarIcon } from "@/components/icons";
 
 export default function Hero() {
@@ -42,7 +42,14 @@ export default function Hero() {
 
         {/* Image — bleeds off the right edge on desktop, full-bleed on mobile */}
         <div className="relative -mx-5 h-[260px] sm:-mx-8 sm:h-[340px] lg:mx-0 lg:mr-[-72px] lg:h-[520px]">
-          <PlaceholderImage label="Hero: barrel rolling in Fore Street" />
+          <Image
+            src="/images/hero.jpg"
+            alt="Teams racing barrels down Fore Street during Beer Regatta"
+            fill
+            priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </div>
     </section>
