@@ -23,13 +23,14 @@ export const FACTS = [
   },
 ] as const;
 
+// Gallery tiles. Each has a real photo in /public/images plus descriptive alt.
+// (Two further tiles — IMG_7585 and IMG_5395 — are pending re-export at a
+// web-friendly size; add them here as gallery-4/gallery-8 once available.)
 export const GALLERY: Shot[] = [
-  "Fancy dress crew",
-  "Raft race",
-  "Barrel rolling",
-  "Children racing",
-  "Beer beach",
-  "Fireworks",
-  "Regatta parade",
-  "Prize giving",
-].map((label, i) => ({ id: String(i + 1), label }));
+  { id: "1", src: "/images/gallery-1.jpg", alt: "Crowds enjoying Beer Regatta week" },
+  { id: "2", src: "/images/gallery-2.jpg", alt: "Beer Regatta festivities on Fore Street" },
+  { id: "3", src: "/images/gallery-3.jpg", alt: "Beer Regatta on the seafront" },
+  { id: "5", src: "/images/gallery-5.jpg", alt: "Barrel-rolling race down Fore Street" },
+  { id: "6", src: "/images/gallery-6.jpg", alt: "Beer lifeboat crew during Regatta" },
+  { id: "7", src: "/images/gallery-7.jpg", alt: "Racing at Beer Regatta" },
+];

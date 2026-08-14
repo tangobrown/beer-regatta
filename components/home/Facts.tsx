@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Marquee from "@/components/Marquee";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import { FACTS } from "@/content/home";
 
 export default function Facts() {
@@ -29,7 +29,13 @@ export default function Facts() {
 
         {/* Image — bleeds off the right edge on desktop */}
         <div className="relative -mx-5 h-[300px] sm:-mx-8 sm:h-[380px] lg:mx-0 lg:mr-[-72px] lg:mt-[-24px] lg:h-[500px]">
-          <PlaceholderImage label="Facts photo: fancy dress raft team" />
+          <Image
+            src="/images/facts.jpg"
+            alt="Beer Regatta bunting and crowds on Fore Street"
+            fill
+            sizes="(min-width: 1024px) 42vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </div>
     </section>

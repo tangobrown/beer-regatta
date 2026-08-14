@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import Marquee from "@/components/Marquee";
-import PlaceholderImage from "@/components/PlaceholderImage";
 
 export default function Welcome() {
   return (
@@ -15,7 +15,13 @@ export default function Welcome() {
       <div className="mx-auto grid max-w-content grid-cols-1 gap-10 px-5 pb-14 sm:px-8 lg:grid-cols-2 lg:items-end lg:gap-[70px] lg:px-14 lg:pb-[90px] xl:px-[72px]">
         {/* Image — bleeds off the left edge on desktop, full-bleed on mobile */}
         <div className="relative -mx-5 h-[360px] sm:-mx-8 sm:h-[460px] lg:mx-0 lg:ml-[-72px] lg:mt-[-48px] lg:h-[620px]">
-          <PlaceholderImage label="Welcome photo: decorated float" />
+          <Image
+            src="/images/welcome.jpg"
+            alt="Fancy dress crew celebrating during Beer Regatta week"
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
         </div>
 
         {/* White card */}

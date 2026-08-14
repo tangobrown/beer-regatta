@@ -1,9 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import PlaceholderImage from "./PlaceholderImage";
 
-export type Shot = { id: string; label: string };
+/** A tile is either a real photo (src + alt) or a labelled placeholder slot. */
+export type Shot = {
+  id: string;
+  src?: string;
+  alt?: string;
+  label?: string;
+};
 
 /** Constant pixel velocity keeps perceived speed identical across tile sizes. */
 const VELOCITY_PX_PER_SEC = 60;
@@ -92,7 +99,17 @@ export default function Carousel({ shots }: { shots: Shot[] }) {
           className="relative h-[320px] w-[260px] flex-none snap-center sm:h-[400px] sm:w-[320px] lg:h-[500px] lg:w-[420px]"
           aria-hidden={i >= shots.length ? "true" : undefined}
         >
-          <PlaceholderImage label={shot.label} />
+          {shot.src ? (
+            <Image
+              src={shot.src}
+              alt={i >= shots.length ? "" : shot.alt ?? ""}
+              fill
+              sizes="(min-width: 1024px) 420px, (min-width: 640px) 320px, 260px"
+              className="object-cover"
+            />
+          ) : (
+            <PlaceholderImage label={shot.label ?? ""} />
+          )}
         </div>
       ))}
     </div>

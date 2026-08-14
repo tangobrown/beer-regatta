@@ -1,11 +1,32 @@
-import PlaceholderImage from "@/components/PlaceholderImage";
+import Image from "next/image";
+
+// Set to the background photo once available (IMG_6308). While null, the
+// section shows a deep navy gradient so it reads as intentional, not broken.
+const BG_SRC: string | null = null;
 
 export default function BeerVillage() {
   return (
-    <section id="beer" className="bg-navy-deep pb-16 pt-[72px] lg:pb-[120px] lg:pt-[180px]">
-      <div className="lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-16">
-        {/* Copy — right-justified in its track with a 72px left gutter on desktop */}
-        <div className="px-5 sm:px-8 lg:w-full lg:max-w-[920px] lg:justify-self-end lg:pl-[72px] lg:pr-0">
+    <section id="beer" className="relative overflow-hidden bg-navy-deep">
+      {/* Background image layer */}
+      {BG_SRC && (
+        <Image
+          src={BG_SRC}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          aria-hidden="true"
+        />
+      )}
+      {/* Legibility overlay — keeps the white/cyan copy readable over any photo */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/90 to-navy-deep/70"
+      />
+
+      {/* Copy */}
+      <div className="relative mx-auto max-w-content px-5 py-[72px] sm:px-8 lg:px-14 lg:py-[180px] xl:px-[72px]">
+        <div className="max-w-[920px]">
           <h2 className="mb-7 font-sans text-h2 font-bold text-cyan">About Beer Village</h2>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-[54px]">
             <div>
@@ -31,11 +52,6 @@ export default function BeerVillage() {
               </p>
             </div>
           </div>
-        </div>
-
-        {/* Image — full-bleed to the right edge on desktop */}
-        <div className="relative -mx-5 mt-10 h-[320px] sm:-mx-8 lg:mx-0 lg:mt-0 lg:h-[620px]">
-          <PlaceholderImage label="Beer village: cliffs and cove" />
         </div>
       </div>
     </section>
