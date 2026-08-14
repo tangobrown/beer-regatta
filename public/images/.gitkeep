@@ -1,0 +1,17 @@
+# Drop the client's exported photography here.
+#
+# 13 positions are referenced by the site (see content/home.ts + the section
+# components). Suggested subjects:
+#   hero            — barrel rolling in Fore Street
+#   welcome         — decorated float
+#   facts           — fancy dress raft team
+#   beer-village    — cliffs and cove
+#   gallery 1–8     — fancy dress crew, raft race, barrel rolling,
+#                     children racing, Beer beach, fireworks,
+#                     Regatta parade, prize giving
+#
+# To wire a real photo in, replace <PlaceholderImage/> in the relevant
+# component with next/image, e.g.:
+#   <Image src="/images/hero.jpg" alt="…" fill className="object-cover"
+#          sizes="(min-width:1024px) 50vw, 100vw" priority />
+# The parent box already reserves the aspect ratio, so CLS stays ~0.

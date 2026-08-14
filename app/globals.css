@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Approx. sticky-header height; used for anchor scroll offset. */
+  --header-h: 80px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 96px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Anchor jumps clear the sticky header. */
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  background-color: #14263d;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Hard corners and no shadows are part of the identity — enforced globally,
+   overridable per element where genuinely needed. */
+
+/* Hide scrollbars on the swipeable carousel track while keeping it scrollable. */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Focus-visible rings in cyan on all interactive elements (design has none). */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #29b8e8;
+  outline-offset: 2px;
+}
+
+/* Respect users who prefer reduced motion: stop the decorative loops. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track,
+  .carousel-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}
