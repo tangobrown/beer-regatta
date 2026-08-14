@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-// Set to the background photo once available (IMG_6308). While null, the
-// section shows a deep navy gradient so it reads as intentional, not broken.
-const BG_SRC: string | null = null;
+// Background photo for the section (Beer_Beachside). While null, the section
+// falls back to a deep navy gradient so it reads as intentional, not broken.
+const BG_SRC: string | null = "/images/village.jpg";
 
 export default function BeerVillage() {
   return (
