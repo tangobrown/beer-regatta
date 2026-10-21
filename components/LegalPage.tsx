@@ -19,20 +19,32 @@ export type LegalContent = {
   sections: Section[];
 };
 
+/**
+ * Only allow safe link schemes. Blocks javascript:, data:, vbscript: etc. so
+ * content-authored links can never become an XSS vector. Permits https/http,
+ * mailto, tel and relative (same-site) URLs.
+ */
+function safeHref(href: string): string {
+  const value = href.trim();
+  if (/^(https?:|mailto:|tel:)/i.test(value)) return value;
+  if (value.startsWith("/") || value.startsWith("#")) return value;
+  return "#";
+}
+
 function RichTextView({ nodes }: { nodes: RichText }) {
   return (
     <>
       {nodes.map((node, i) => {
         if (typeof node === "string") return <Fragment key={i}>{node}</Fragment>;
         if ("br" in node) return <br key={i} />;
+        const href = safeHref(node.link.href);
+        const external = href.startsWith("http");
         return (
           <a
             key={i}
-            href={node.link.href}
+            href={href}
             className="text-cyan transition-colors duration-150 hover:text-cyan-light"
-            {...(node.link.href.startsWith("http")
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
+            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           >
             {node.link.text}
           </a>
