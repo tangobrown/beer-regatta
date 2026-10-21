@@ -18,7 +18,7 @@ export default function MobileMenu({
 }: {
   open: boolean;
   onClose: () => void;
-  triggerRef: React.RefObject<HTMLButtonElement>;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
   activeHref?: string;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);

@@ -7,6 +7,18 @@
 
 ---
 
+> **Update — 2026-10-21 (post-audit):** The recommended major upgrade was
+> completed. **Next.js 14.2.35 → 16.4.2** and **React 18.3.1 → 19.3.1**
+> (ESLint → 9 flat config; `next lint` replaced by the ESLint CLI). This
+> cleared the remaining **critical `next`** advisory. The site is unchanged
+> visually and behaviourally (build/lint/types pass; 0 CSP violations; no
+> horizontal overflow 320–1920px; images optimize correctly). `npm audit`
+> now reports **9 findings, all dev/build-time only** (Tailwind 3 CLI chain +
+> ESLint tooling), fixable only via `tailwindcss@4` (a design-risky major,
+> deliberately deferred). See §4/§5 below for the pre-upgrade detail.
+
+---
+
 ## 1. Summary
 
 **Before:** Low–Medium risk. The site is static with a very small attack surface, but it ran an outdated Next.js patch (14.2.5) with known advisories, shipped **no security headers** (no CSP, HSTS, framing protection, etc.), advertised its framework via `X-Powered-By`, and had no automated dependency monitoring.

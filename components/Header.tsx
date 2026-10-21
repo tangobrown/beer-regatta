@@ -17,8 +17,10 @@ export default function Header() {
   const [activeId, setActiveId] = useState<string>("top");
   const triggerRef = useRef<HTMLButtonElement>(null);
 
-  // Close the menu on route change.
+  // Close the menu on route change. Resetting transient UI state when the
+  // route changes is an intentional, idiomatic use of an effect here.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
   }, [pathname]);
 
